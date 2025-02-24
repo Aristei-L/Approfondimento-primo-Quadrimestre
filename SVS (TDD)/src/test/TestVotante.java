@@ -11,7 +11,7 @@ public class TestVotante {
     static Canzone canzone;
 
     @BeforeAll
-    @DisplayName("Impostazioni")
+    @DisplayName("Settings")
     static void SetUp(){
         votante = new Votante("Mario Rossi", 5);
         canzone = new Canzone("Il Pescatore", "Fabrizio De Andrè");

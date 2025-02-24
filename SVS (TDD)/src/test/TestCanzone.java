@@ -8,7 +8,7 @@ public class TestCanzone {
     static Canzone canzone;
 
     @BeforeAll
-    @DisplayName("Impostazioni")
+    @DisplayName("Settings")
     static void SetUp(){
         canzone = new Canzone("Il Pescatore", "Fabrizio De Andrè");
     }
