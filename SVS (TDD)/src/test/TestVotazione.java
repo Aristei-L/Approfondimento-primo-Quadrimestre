@@ -3,8 +3,11 @@ import SVS.*;
 import Eccezioni.*;
 import com.google.j2objc.annotations.Property;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.DisabledOnOs;
+import org.junit.jupiter.api.condition.EnabledOnOs;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.condition.OS.*;
 
 public class TestVotazione {
     Votazione votazione;
@@ -79,4 +82,31 @@ public class TestVotazione {
         }
     }
 
+    @Test
+    @EnabledOnOs(MAC)
+    @DisplayName("Test su 🍎MAC🍎")
+    void onlyOnMacOs() {
+        votazione = new Votazione(5);
+        votazione.aggiungiVotante(new Votante("John MacOS", 1000));
+        votazione.aggiungiCanzone(new Canzone("MacSong.MP3", "Mark SongMaker"));
+    }
+
+    @Test
+    @DisabledOnOs(WINDOWS)
+    @EnabledOnOs({ LINUX, MAC })
+    @DisplayName("Test Non Su ❌Windows❌")
+    void onLinuxOrMac() {
+        votazione = new Votazione(5);
+        votazione.aggiungiVotante(new Votante("John NotWindows", 5));
+        votazione.aggiungiCanzone(new Canzone("NotWindowsSong.MP3", "Mark SongMaker"));
+    }
+
+    @Test
+    @EnabledOnOs(WINDOWS)
+    @DisplayName("Test su \uD83E\uDE9FWindows\uD83E\uDE9F")
+    void notOnWindows() {
+        votazione = new Votazione(5);
+        votazione.aggiungiVotante(new Votante("John Windows", 5));
+        votazione.aggiungiCanzone(new Canzone("RealWindowsSong.MP3", "Mark SongMaker"));
+    }
 }
