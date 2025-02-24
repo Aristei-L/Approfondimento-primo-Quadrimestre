@@ -8,4 +8,19 @@ public class Votante {
         this.nome = nome;
         this.budgetVoti = budgetVoti;
     }
+
+    public void vota(Canzone canzone, int voto) {
+        if (budgetVoti > 0) {
+            canzone.assegnaVoto(voto);
+            budgetVoti--;
+        }
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getBudgetVoti() {
+        return budgetVoti;
+    }
 }
