@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="au.dius.pact.consumer.junit5" level="project" />
+    <orderEntry type="library" name="cn.msuno.javadoc" level="project" />
   </component>
 </module>

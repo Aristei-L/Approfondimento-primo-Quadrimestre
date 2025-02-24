@@ -1,14 +1,29 @@
 package SVS;
+
 import Eccezioni.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Classe principale per l'applicazione di votazione.
+ * Fornisce un'interfaccia a menu per aggiungere canzoni, registrare voti e visualizzare
+ * le canzoni e i votanti.
+ *
+ * @author Aristei Lorenzo
+ */
 public class Main {
+
+    /**
+     * Metodo principale che avvia l'applicazione di votazione.
+     *
+     * @param args Argomenti della riga di comando.
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Votazione votazione = new Votazione(15);
 
         boolean exit = false;
+
         while (!exit) {
             System.out.println("|=|=|  MENU VOTAZIONE |=|=|");
             System.out.println("| 1:  Aggiungi Canzone    |");
