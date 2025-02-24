@@ -1,4 +1,5 @@
 package SVS;
+import Eccezioni.*;
 
 public class Votante {
     private String nome;
@@ -9,11 +10,12 @@ public class Votante {
         this.budgetVoti = budgetVoti;
     }
 
-    public void vota(Canzone canzone, int voto) {
-        if (budgetVoti > 0) {
-            canzone.assegnaVoto(voto);
-            budgetVoti--;
+    public void vota(Canzone canzone, int voto) throws VotoInvalidoException, LimiteVotiSuperatoException, CanzoneGiàVotataException {
+        if (budgetVoti <= 0) {
+            throw new LimiteVotiSuperatoException("Non hai più voti disponibili.");
         }
+        canzone.assegnaVoto(voto);
+        budgetVoti--;
     }
 
     public String getNome() {
@@ -22,5 +24,9 @@ public class Votante {
 
     public int getBudgetVoti() {
         return budgetVoti;
+    }
+
+    public void setBudgetVoti(int budgetVoti) {
+        this.budgetVoti = budgetVoti;
     }
 }

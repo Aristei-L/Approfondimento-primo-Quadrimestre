@@ -1,5 +1,5 @@
 package SVS;
-
+import Eccezioni.*;
 public class Canzone {
     private String titolo;
     private String artista;
@@ -11,12 +11,15 @@ public class Canzone {
         this.voto = -1;
     }
 
-    public void assegnaVoto(int voto) {
+
+    public void assegnaVoto(int voto) throws VotoInvalidoException, CanzoneGiàVotataException {
         if (voto < 1 || voto > 10) {
-            if (this.voto == -1){
-                this.voto = voto;
-            }
+            throw new VotoInvalidoException("Il voto deve essere tra 1 e 10.");
         }
+        if (this.voto != -1) {
+            throw new CanzoneGiàVotataException("Questa canzone è già stata votata.");
+        }
+        this.voto = voto;
     }
 
     public int getVoto() {
